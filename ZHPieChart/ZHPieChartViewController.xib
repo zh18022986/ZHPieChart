@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZHPieChartViewController">
+            <connections>
+                <outlet property="pieView" destination="WEs-Zf-9FJ" id="Tky-hx-jGr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEs-Zf-9FJ" customClass="ZHPieView">
+                    <rect key="frame" x="0.0" y="100" width="375" height="270"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="jyA-ZD-moy"/>
+                    </constraints>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38s-GK-KOq">
+                    <rect key="frame" x="8" y="435" width="359" height="30"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.46274509800000002" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="kRN-PB-XgU"/>
+                    </constraints>
+                    <state key="normal" title="添加"/>
+                    <connections>
+                        <action selector="addBtnClick:" destination="-1" eventType="touchUpInside" id="etP-RK-TBz"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9B-8D-zpl">
+                    <rect key="frame" x="8" y="473" width="359" height="30"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="goR-BC-MGt"/>
+                        <constraint firstAttribute="width" constant="359" id="izB-zp-vlf"/>
+                    </constraints>
+                    <state key="normal" title="删除"/>
+                    <connections>
+                        <action selector="deleteBtnClick:" destination="-1" eventType="touchUpInside" id="CT7-Td-YYA"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQi-FA-h3P">
+                    <rect key="frame" x="8" y="511" width="359" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.67843137249999996" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="a7N-C0-Dvr"/>
+                    </constraints>
+                    <state key="normal" title="更新"/>
+                    <connections>
+                        <action selector="updateBtnClick" destination="-1" eventType="touchUpInside" id="UA5-QT-Mc4"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="vQi-FA-h3P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="0Qt-XF-8LG"/>
+                <constraint firstItem="WEs-Zf-9FJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Avl-E4-hYf"/>
+                <constraint firstAttribute="trailing" secondItem="WEs-Zf-9FJ" secondAttribute="trailing" id="JDI-vK-Nfy"/>
+                <constraint firstItem="WEs-Zf-9FJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="ONe-VU-hea"/>
+                <constraint firstItem="f9B-8D-zpl" firstAttribute="top" secondItem="38s-GK-KOq" secondAttribute="bottom" constant="8" id="OP0-MN-SKu"/>
+                <constraint firstItem="38s-GK-KOq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ROt-Lb-erB"/>
+                <constraint firstAttribute="trailing" secondItem="38s-GK-KOq" secondAttribute="trailing" constant="8" id="SMB-gi-GAf"/>
+                <constraint firstAttribute="trailing" secondItem="f9B-8D-zpl" secondAttribute="trailing" constant="8" id="iFN-nI-A6C"/>
+                <constraint firstItem="vQi-FA-h3P" firstAttribute="top" secondItem="f9B-8D-zpl" secondAttribute="bottom" constant="8" id="jrV-t7-hiA"/>
+                <constraint firstItem="38s-GK-KOq" firstAttribute="top" secondItem="WEs-Zf-9FJ" secondAttribute="bottom" constant="65" id="kMq-Fp-Vsu"/>
+                <constraint firstItem="f9B-8D-zpl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lU7-jk-VHs"/>
+                <constraint firstAttribute="trailing" secondItem="vQi-FA-h3P" secondAttribute="trailing" constant="8" id="lfa-pc-5re"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="295.5" y="394.5"/>
+        </view>
+    </objects>
+</document>
