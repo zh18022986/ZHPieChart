@@ -10,9 +10,9 @@
 #import "ZHPieView.h"
 #import "MyPieElement.h"
 
-#define     NYColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define NYColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define kMinTouchSpacing 20.0
-#define         RIDO_TO_5S              [[UIScreen mainScreen] bounds].size.width / 320.0
+#define RIDO_TO_5S       [[UIScreen mainScreen] bounds].size.width / 320.0
 
 typedef NS_ENUM(NSUInteger, Direction) {
     DirectionUnknown,
@@ -22,8 +22,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 @interface ZHPieChartViewController (){
     NSArray *items;
-    
 }
+
 @property (weak, nonatomic) IBOutlet ZHPieView *pieView;
 @property (assign, nonatomic) Direction lastDirection; //最后一次方向
 @property (assign, nonatomic) CGPoint currentTickleStart; //当前开始坐标位置
@@ -43,8 +43,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+//默认选择第几级
     self.index = 6;
+    //初始化创建资产配置图有6个模块
     items = @[[MyPieElement pieElementWithValue:20 color:self.colorArray[0]],
               [MyPieElement pieElementWithValue:5 color:self.colorArray[1]],
               [MyPieElement pieElementWithValue:5 color:self.colorArray[2]],
@@ -53,11 +54,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
               [MyPieElement pieElementWithValue:5 color:self.colorArray[5]],
               [MyPieElement pieElementWithValue:20 color:self.colorArray[6]]
               ];
-    //初始化创建6个模块
     for(int i = 0; i < items.count; i++){
         MyPieElement* newElem = items[i];
         [self.pieView.layer addValues:@[newElem] animated:NO];
     }
+    //每个模块上面现实的百分比数字
     self.pieView.layer.transformTitleBlock = ^(PieElement* elem, float percent){
         return [NSString stringWithFormat:@"%ld", (long)percent];
     };
@@ -65,6 +66,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.pieView addSubview:self.centerView];
 }
 
+//写死的颜色数组
 - (NSArray *)colorArray{
     _colorArray = @[NYColor(97, 223, 246),
                     NYColor(0, 198, 189),
@@ -76,7 +78,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     return _colorArray;
 }
 
-//添加
+//添加功能暂时没用，已经在xib中隐藏且Enable = NO，暂定6个模块，增加或删除后旋转圆环会crash，因为数组越界
 - (IBAction)addBtnClick:(id)sender {
     MyPieElement* newElem = [MyPieElement pieElementWithValue:10 color:self.colorArray[1]];
     newElem.title = [NSString stringWithFormat:@"%d", 10];
@@ -84,6 +86,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.pieView.layer insertValues:@[newElem] atIndexes:@[@(insertIndex)] animated:YES];
 }
 
+//删除功能暂时没用，暂定6个模块，增加或删除后旋转圆环会crash，因为数组越界
 - (IBAction)deleteBtnClick:(id)sender {
     if(self.pieView.layer.values.count <= 0)
         return;
@@ -91,6 +94,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.pieView.layer deleteValues:@[self.pieView.layer.values[deleteIndex]] animated:YES];
 }
 
+//随机改变每个模块的值
 - (IBAction)updateBtnClick {
     if(self.pieView.layer.values.count == 0)
         return;
@@ -200,7 +204,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 - (NSArray *)dateArray{
     if (_dateArray == nil) {
-        //        _dateArray = [[NSMutableArray alloc] init];
+        //数据源
         _dateArray = @[@[@100,@0,@0,@0,@0,@0,@0],
                        @[@50,@50,@0,@0,@0,@0,@0],
                        @[@44,@44,@2,@2,@4,@5,@2],
@@ -218,10 +222,10 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 - (UIView *)centerView{
     if (_centerView == nil) {
+        //中间白色实心圆位置懒得算了，x和y写死的
         _centerView = [[UIView alloc] initWithFrame:CGRectMake(127,55, self.pieView.layer.minRadius*2, self.pieView.layer.minRadius*2)];
         _centerView.layer.cornerRadius = 80.f;
         _centerView.layer.masksToBounds = YES;
-//        _centerView.backgroundColor = [UIColor redColor];
         _centerView.backgroundColor = [UIColor whiteColor];
         
         UILabel *fengXian = [[UILabel alloc] initWithFrame:CGRectMake(55, 20, 60, 30)];

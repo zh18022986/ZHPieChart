@@ -9,5 +9,7 @@
 #import "PieElement.h"
 
 @interface MyPieElement : PieElement
+
 @property (nonatomic, strong) NSString* title;
+
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHPieChartViewController : UIViewController
-//- (void)handlePan:(UIPanGestureRecognizer *)recognizer;
+
 @end
